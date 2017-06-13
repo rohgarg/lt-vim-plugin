@@ -232,6 +232,12 @@ g:languagetool_win_height                         *g:languagetool_win_height*
   to let Vim pick a default size.
   Default is: 14
 
+g:languagetool_ngram                                   *g:languagetool_ngram*
+
+  This variable specifies the location of the ngram database. This is used
+  to pass the `--languagemode` option to the command-line tool.
+  By default no ngram database is used.
+
 You can also customize the following syntax highlighting groups: >
 
   LanguageToolCmd

@@ -163,6 +163,12 @@ function s:LanguageToolSetUp() "{{{1
     endif
   endif
 
+  if exists("g:languagetool_ngram")
+    let s:languagetool_ngram = g:languagetool_ngram
+  else
+    let s:languagetool_ngram = ''
+  endif
+
   let s:languagetool_jar = exists("g:languagetool_jar")
   \ ? g:languagetool_jar
   \ : $HOME . '/languagetool/languagetool-commandline.jar'
@@ -242,6 +248,7 @@ function s:LanguageToolCheck(line1, line2) "{{{1
   \ . ' -c '    . s:languagetool_encoding
   \ . (empty(s:languagetool_disable_rules) ? '' : ' -d '.s:languagetool_disable_rules)
   \ . ' -l '    . s:languagetool_lang
+  \ . (empty(s:languagetool_ngram) ? '' : ' --languagemodel '.s:languagetool_ngram)
   \ . ' --api ' . l:tmpfilename
   \ . ' 2> '    . l:tmperror
 
